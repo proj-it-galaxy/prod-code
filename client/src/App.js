@@ -1,16 +1,11 @@
 import './App.css';
+import Header from './Header';
 import Post from './Post';
 
 function App() {
   return (
     <main>
-      <header>
-        <a herf="" className="logo"> IT-GALAXY</a>
-        <nav>
-          <a herf="">Login</a>
-          <a herf="">Register</a>
-        </nav>
-      </header>
+      <Header />
       <Post />
       <Post />
       <Post />
