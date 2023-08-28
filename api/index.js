@@ -11,8 +11,13 @@ mongoose.connect('mongodb+srv://ahad:m0cDpmzqYDDUj7Zi@clusterx.m1n2ijj.mongodb.n
 
 app.post('/register',async (req, res) => {
     const {username,password} = req.body;
-    const userDoc = await User.create({username,password});
-    res.json(userDoc);
+    try{
+        const userDoc = await User.create({username,password});
+        res.json(userDoc);
+    }catch(e){
+        res.status(400).json(e);
+    }
+
 });
 
 app.listen(4000);
