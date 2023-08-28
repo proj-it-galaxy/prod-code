@@ -33,7 +33,10 @@ app.post('/login' , async (req,res) => {
     const userDoc = await User.findOne({username});
     const passOk = bcrypt.compareSync(password, userDoc.password);
     if(passOk){
-
+        jwt.sign({username,id:userDoc._id},secret,{},(err,token) => {
+            if(err) throw err;
+            res.cookie('token',token).json('ok');
+        });
     }else{
         res.status(400).json('Wrong credentials')
     }
